@@ -79,15 +79,30 @@ public class MySQLVinoDAO implements IVinoDAO{
         try{
             st=cn.createStatement();
             if(grado!=null || grado!=""){
-                rs=st.executeQuery("CALL SP_vinoxGrado('"+grado+"')");
+                if(idProductor>0){
+                     rs=st.executeQuery("CALL SP_vinoxGradoxProductor('"+grado+"',"+idProductor+")");
                 
-                while(rs.next()){
-                    Vino vino = new Vino();
-                    vino.setId(rs.getInt("idVino"));
-                    
-                    vinoList.add(vino);
-   
+                    while(rs.next()){
+                        Vino vino = new Vino();
+                        vino.setId(rs.getInt("idVino"));
+
+                        vinoList.add(vino);
+
+                    }   
                 }
+                else{
+                   rs=st.executeQuery("CALL SP_vinoxGrado('"+grado+"')");
+                
+                    while(rs.next()){
+                        Vino vino = new Vino();
+                        vino.setId(rs.getInt("idVino"));
+
+                        vinoList.add(vino);
+
+                    } 
+                }
+
+                
             }
             else if(idProductor>0){
                 rs=st.executeQuery("CALL SP_vinoxProductor("+idProductor+")");
