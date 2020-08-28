@@ -49,8 +49,13 @@
     %>
     
 	<section id="examen">
-            <form action="ServletPrueba" method="POST">
+            <form id="form0" action="ServletPrueba" method="POST">
                 <input type="text" id="nombre" name="nombre" placeholder="nombre" required/>
+                <input type="submit" value="entrar">
+            </form>
+            
+            <form action="ServletPrueba" method="POST">
+                <input type="text" id="nombrex" name="nombre" placeholder="nombre" />
                 <input type="submit" value="entrar">
             </form>
 		<h1 class="center">PARTE 1 EXAMEN FINAL</h1>
@@ -502,6 +507,25 @@
                         },
                     success: function (response) {
                         $('#respuesta8').load(response.mensaje);
+                    }
+                });
+            }
+        });
+        $('#form0').validate({
+            rules: {
+            },
+            messages: {
+            },
+            submitHandler: function (form) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'ServletPrueba',
+                    dataType: 'json',
+                    data:
+                        {
+                            nombre: $('#nombrex').val()
+                        },
+                    success: function (response) {
                     }
                 });
             }

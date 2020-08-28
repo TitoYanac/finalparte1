@@ -7,6 +7,7 @@ package Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +31,8 @@ public class ServletPrueba extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String nombre  = request.getParameter("nombre");
+        Enumeration<String> a = request.getHeaderNames();
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
@@ -38,7 +41,7 @@ public class ServletPrueba extends HttpServlet {
             out.println("<title>Servlet ServletPrueba</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>parametro:  " + request.getAttribute("nombre") + "</h1>");
+            out.println("<h1>parametro:  " + request.getParameter("nombre") + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

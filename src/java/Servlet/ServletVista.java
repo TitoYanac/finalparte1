@@ -32,6 +32,7 @@ public class ServletVista extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String minombre = request.getContextPath() ;
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
@@ -40,7 +41,7 @@ public class ServletVista extends HttpServlet {
             out.println("<title>Servlet ServletVista</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ServletVista at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ServletVista at " +  request.getContextPath()  + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
