@@ -44,14 +44,19 @@
 	</style>
 </head>
 <body>
+    <%
+        HttpSession sesion = request.getSession();
+    %>
+    
 	<section id="examen">
             <form action="ServletPrueba" method="POST">
+                <input type="hidden" value="tito" name="nombre"/>
             <input type="submit" value="entrar">
         </form>
             <a href="/ServletPrueba">asfawsdasfasd</a>
 		<h1 class="center">PARTE 1 EXAMEN FINAL</h1>
 <!-- inicio pregunta 1 -->
-                <form id="form1" class="row">
+                <form id="form1" class="row" action="ServletPreguntas" method="POST">
 			<p class="pregunta">1.¿Muestre el nombre y el apellido de los productores de una región determinada que han tenido una producción superior a una cantidad determinada de botellas?</p>		
 			<div class="col-md-6">
 				<div class="form-group">
@@ -64,7 +69,7 @@
 				</div>
 			</div>
 			<div class="col-md-4">
-                            <input type='submit' id='accion1' name='Respuesta1' value='Respuesta1' class="btn btn-primary"/>
+                            <input type='submit' id="accion1" name='Respuesta1' value='Respuesta1' class="btn btn-primary"/>
 			</div>
 		</form>
 		<div class="respuesta" id="respuesta1">
@@ -300,24 +305,34 @@
                 cantidad1: {required:'Este Campo es Obligatorio',number:'Solo Numeros'}
             },
             submitHandler: function (form) {
-                $.ajax({
-                    type: 'POST',
-                    url: 'ServletPreguntas',
-                    dataType: 'json',
-                    data:
-                        {
-                            accion: $('#accion1').val(),
-                            region: $('#region1').val(),
-                            cantidad: $('#cantidad1').val()
-                        },
-                    success: function (response) {
-                        if(response.mensaje){
-                            $('#respuesta1').load(response.mensaje);
-                        }else{
-                            alert("no carga el servlet");
-                        }
-                    }
-                });
+                 
+                if(confirm('Are you sure?')) { 
+                    var accion1 = $('#accion1').val();
+                    var region1 =  $('#region1').val();
+                    var cantidad1 = $('#cantidad1').val();
+                    
+                    alert(accion1+" - "+region1+" + "+cantidad1);
+                 //form.submit(); 
+                    $.ajax({
+                       type: 'POST',
+                       url: 'ServletPreguntas',
+                       dataType: 'json',
+                       data:
+                           {
+                               accion: accion1,
+                               region: region1,
+                               cantidad: cantidad1
+                           },
+                       success: function (response) {
+                           if(response.mensaje!==""){
+                               $('#respuesta1').load(response.mensaje);
+                           }else{
+                               alert("no carga la respuesta1");
+                           }
+                       }
+                   });
+                } 
+                
             }
         });
         //pregunta2

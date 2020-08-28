@@ -37,17 +37,52 @@ public class ServletPreguntas extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
         sesion = request.getSession(false);
         response.setContentType("text/html;charset=UTF-8");
-        String accion = request.getParameter("accion");
-        switch(request.getParameter("accion")){
-            case "cargarTablaResumen":
+        String accion = "" + request.getParameter("accion");
+        
+        
+        String region = request.getParameter("region");
+        String cantidad = request.getParameter("cantidad");
+        switch(accion){
+            case "Respuesta1":
                 pregunta1(request,response);
             break;
-            case "cargarTablaSaldos":
+            case "Respuesta2":
                 pregunta2(request,response);
             break;
-            case "cargarTablaCorresponsal":
+            case "Respuesta3":
                 pregunta3(request,response);
             break;
+            case "Respuesta4":
+                pregunta3(request,response);
+            break;
+            case "Respuesta5":
+                pregunta3(request,response);
+            break;
+            case "Respuesta6":
+                pregunta3(request,response);
+            break;
+            case "Respuesta7":
+                pregunta3(request,response);
+            break;
+            case "Respuesta8":
+                pregunta3(request,response);
+            break;
+            default:
+                  response.setContentType("text/html;charset=UTF-8");
+                    try (PrintWriter out = response.getWriter()) {
+                        /* TODO output your page here. You may use following sample code. */
+                        out.println("<!DOCTYPE html>");
+                        out.println("<html>");
+                        out.println("<head>");
+                        out.println("<title>Servlet ServletVista</title>");            
+                        out.println("</head>");
+                        out.println("<body>");
+                        out.println("<h1>Servlet ServletVista at " + request.getContextPath() + "</h1>");
+                        out.println("<h1>Ocurrio un error</h1>");
+                        out.println("</body>");
+                        out.println("</html>");
+                    }
+                break;
         }
     }
 
