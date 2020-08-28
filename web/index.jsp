@@ -50,10 +50,9 @@
     
 	<section id="examen">
             <form action="ServletPrueba" method="POST">
-                <input type="hidden" value="tito" name="nombre"/>
-            <input type="submit" value="entrar">
-        </form>
-            <a href="/ServletPrueba">asfawsdasfasd</a>
+                <input type="text" id="nombre" name="nombre" placeholder="nombre" required/>
+                <input type="submit" value="entrar">
+            </form>
 		<h1 class="center">PARTE 1 EXAMEN FINAL</h1>
 <!-- inicio pregunta 1 -->
                 <form id="form1" class="row" action="ServletPreguntas" method="POST">
@@ -311,14 +310,13 @@
                     var region1 =  $('#region1').val();
                     var cantidad1 = $('#cantidad1').val();
                     
-                    alert(accion1+" - "+region1+" + "+cantidad1);
+                    alert(accion1 + " - " + region1 + " - " + cantidad1);
                  //form.submit(); 
                     $.ajax({
                        type: 'POST',
                        url: 'ServletPreguntas',
                        dataType: 'json',
-                       data:
-                           {
+                       data:{
                                accion: accion1,
                                region: region1,
                                cantidad: cantidad1
