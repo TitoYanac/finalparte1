@@ -39,6 +39,7 @@ public class ServletPrueba extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ServletPrueba at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ServletPrueba at " + request.getAttribute("nombre") + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
