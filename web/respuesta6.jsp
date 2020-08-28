@@ -20,7 +20,7 @@
 
 </head>
 <body>
-    <section id="examen">
+    <section>
         
     <%
         HttpSession sesion= request.getSession(false);
@@ -28,23 +28,23 @@
         
         IAccesoFactory accesoFactory = IFactoryDAO.getInstance().getAccesoFactory("MySQL");
         IProductorDAO productorDAO = accesoFactory.getProductorService();
-        List<Productor> tabla = productorDAO.productoresxVinosSignificativos(Integer.parseInt(cantidad));
+        //List<Productor> tabla = productorDAO.productoresxVinosSignificativos(Integer.parseInt(cantidad));
   
-        int num_filas = tabla.size();// conseguimos el numero de filas de la tablaReporteResumen para validar que exista
+        List<Productor> tabla = null;
+        int num_filas = tabla!=null? tabla.size() : 0;
         if(num_filas>0){
         
     %>
 	
             <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Apellido</th>
-                            <th scope="col">Num.vinos.Signif.</th>
-                            
-                        </tr>	
-                    </thead>
+                <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Apellido</th>
+                      <th scope="col">Num.vinos.Signif.</th>
+                    </tr> 
+                </thead>
                     <tbody>
                         <%
                         for(int i=0 ; i < num_filas ; i++ ){
@@ -66,20 +66,22 @@
 	
 	<table class="table table-striped">
             <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">n°identificacion</th>
-                    <th scope="col">Productor</th>
-                </tr>	
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Num.vinos.Signif.</th>
+              </tr> 
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>---</td>
-                    <td>---</td>
-                </tr>
+              <tr>
+                <th scope="row">1</th>
+                <td>No Hay Datos</td>
+                <td>No Hay Datos</td>
+                <td>No Hay Datos</td>
+              </tr>
             </tbody>
-        </table>
+          </table>
 
     <%
         }

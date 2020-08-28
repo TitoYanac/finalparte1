@@ -12,6 +12,18 @@
         <servlet-name>ServletVista</servlet-name>
         <servlet-class>Servlet.ServletVista</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletRespuestas</servlet-name>
+        <servlet-class>Servlet.ServletRespuestas</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>test</servlet-name>
+        <servlet-class>Servlet.Servlet_test</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletPrueba2</servlet-name>
+        <servlet-class>Servlet.ServletPrueba2</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletPrueba</servlet-name>
         <url-pattern>/ServletPrueba</url-pattern>
@@ -23,6 +35,18 @@
     <servlet-mapping>
         <servlet-name>ServletVista</servlet-name>
         <url-pattern>/ServletVista</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletRespuestas</servlet-name>
+        <url-pattern>/ServletRespuestas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>test</servlet-name>
+        <url-pattern>/test</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletPrueba2</servlet-name>
+        <url-pattern>/ServletPrueba2</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

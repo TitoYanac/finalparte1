@@ -20,7 +20,7 @@
 
 </head>
 <body>
-    <section id="examen">
+    <section>
         
     <%
         HttpSession sesion= request.getSession(false);
@@ -28,9 +28,9 @@
         
         IAccesoFactory accesoFactory = IFactoryDAO.getInstance().getAccesoFactory("MySQL");
         IProductorDAO productorDAO = accesoFactory.getProductorService();
-        List<Productor> tabla = productorDAO.productoresxNVinos(Integer.parseInt(cantidad));
-  
-        int num_filas = tabla.size();// conseguimos el numero de filas de la tablaReporteResumen para validar que exista
+        //List<Productor> tabla = productorDAO.productoresxNVinos(Integer.parseInt(cantidad));
+        List<Productor> tabla = null;
+        int num_filas = tabla!=null? tabla.size() : 0;
         if(num_filas>0){
         
     %>
@@ -72,8 +72,8 @@
             <tbody>
                 <tr>
                     <th scope="row">1</th>
-                    <td>---</td>
-                    <td>---</td>
+                    <td>No hay datos</td>
+                    <td>No hay datos</td>
                 </tr>
             </tbody>
         </table>

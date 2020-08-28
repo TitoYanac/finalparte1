@@ -20,7 +20,7 @@
 
 </head>
 <body>
-    <section id="examen">
+    <section >
         
     <%
         HttpSession sesion= request.getSession(false);
@@ -29,9 +29,9 @@
         
         IAccesoFactory accesoFactory = IFactoryDAO.getInstance().getAccesoFactory("MySQL");
         IProductorDAO productorDAO = accesoFactory.getProductorService();
-        List<Productor> productorList = productorDAO.filtrarProductoresxRegionxCantidadBotellas(region, Integer.parseInt(cantidad));
+        List<Productor> tabla = productorDAO.filtrarProductoresxRegionxCantidadBotellas(region, Integer.parseInt(cantidad));
   
-        int num_filas = productorList.size();// conseguimos el numero de filas de la tablaReporteResumen para validar que exista
+        int num_filas = tabla!=null? tabla.size() : 0;
         if(num_filas>0){
         
     %>
@@ -50,8 +50,8 @@
                         %>
                         <tr>
                             <th scope="row"><%=i+1%></th>
-                            <td><%=productorList.get(i).getNombre()%></td>
-                            <td><%=productorList.get(i).getApellido()%></td>
+                            <td><%=tabla.get(i).getNombre()%></td>
+                            <td><%=tabla.get(i).getApellido()%></td>
                         </tr>
                         <%
                         }
@@ -64,20 +64,24 @@
 	
 	<table class="table table-striped">
             <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellido</th>
-                </tr>	
+                    <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Región</th>
+                            <th scope="col">Cantidad</th>
+                    </tr>	
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>---</td>
-                    <td>---</td>
-                </tr>
+                    <tr>
+                            <th scope="row">1</th>
+                            <td>No hay datos</td>
+                            <td>No hay datos</td>
+                            <td>No hay datos</td>
+                            <td>No hay datos</td>
+                    </tr>
             </tbody>
-        </table>
+    </table>
 
     <%
         }

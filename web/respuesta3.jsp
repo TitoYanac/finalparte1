@@ -20,16 +20,16 @@
 
 </head>
 <body>
-    <section id="examen">
+    <section>
         
     <%
         HttpSession sesion= request.getSession(false);
         
         IAccesoFactory accesoFactory = IFactoryDAO.getInstance().getAccesoFactory("MySQL");
         IProductorDAO productorDAO = accesoFactory.getProductorService();
-        List<Productor> tabla = productorDAO.obtenerProductoresSinProduccion();
-  
-        int num_filas = tabla.size();// conseguimos el numero de filas de la tablaReporteResumen para validar que exista
+        //List<Productor> tabla = productorDAO.obtenerProductoresSinProduccion();
+        List<Productor> tabla =  null;
+        int num_filas = tabla!=null? tabla.size() : 0;
         if(num_filas>0){
         
     %>
@@ -48,6 +48,7 @@
                         %>
                         <tr>
                             <th scope="row"><%=i+1%></th>
+                            <td><%=tabla.get(i).getId()%></td>
                             <td><%=tabla.get(i).getNombre()%></td>
                             <td><%=tabla.get(i).getApellido()%></td>
                         </tr>
@@ -61,21 +62,23 @@
     %>
 	
 	<table class="table table-striped">
-            <thead>
-                <tr>
+                <thead>
+                  <tr>
                     <th scope="col">#</th>
-                    <th scope="col">n°identificacion</th>
-                    <th scope="col">Productor</th>
-                </tr>	
-            </thead>
-            <tbody>
-                <tr>
+                    <th scope="col">Numero</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                  </tr> 
+                </thead>
+                <tbody>
+                  <tr>
                     <th scope="row">1</th>
-                    <td>---</td>
-                    <td>---</td>
-                </tr>
-            </tbody>
-        </table>
+                    <td>No hay datos</td>
+                    <td>No hay datos</td>
+                    <td>No hay datos</td>
+                  </tr>
+                </tbody>
+              </table>
 
     <%
         }

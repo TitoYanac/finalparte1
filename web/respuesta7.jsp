@@ -20,18 +20,17 @@
 
 </head>
 <body>
-    <section id="examen">
+    <section >
         
     <%
         HttpSession sesion= request.getSession(false);
-        String grado = (String)sesion.getAttribute("grado");
         String productor = (String)sesion.getAttribute("productor");
         
         IAccesoFactory accesoFactory = IFactoryDAO.getInstance().getAccesoFactory("MySQL");
         IProductorDAO productorDAO = accesoFactory.getProductorService();
-        List<Productor> tabla = productorDAO.
+        List<Productor> tabla = null;
   
-        int num_filas = tabla.size();// conseguimos el numero de filas de la tablaReporteResumen para validar que exista
+        int num_filas = tabla!=null? tabla.size() : 0;
         if(num_filas>0){
         
     %>
@@ -64,20 +63,20 @@
 	
 	<table class="table table-striped">
             <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellido</th>
-                </tr>	
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+              </tr> 
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>---</td>
-                    <td>---</td>
-                </tr>
+              <tr>
+                <th scope="row">1</th>
+                <td>No hay datos</td>
+                <td>No hay datos</td>
+              </tr>
             </tbody>
-        </table>
+          </table>
 
     <%
         }

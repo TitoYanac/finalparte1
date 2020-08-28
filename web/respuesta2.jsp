@@ -20,7 +20,7 @@
 
 </head>
 <body>
-    <section id="examen">
+    <section >
         
     <%
         HttpSession sesion= request.getSession(false);
@@ -29,9 +29,9 @@
         
         IAccesoFactory accesoFactory = IFactoryDAO.getInstance().getAccesoFactory("MySQL");
         IProductorDAO productorDAO = accesoFactory.getProductorService();
-        List<Productor> productorList = productorDAO.filtrarProductoresxRegionxCantidadBotellas(grado, Integer.parseInt(productor));
-  
-        int num_filas = productorList.size();// conseguimos el numero de filas de la tablaReporteResumen para validar que exista
+        //List<Productor> tabla = productorDAO.filtrarProductoresxRegionxCantidadBotellas(grado, Integer.parseInt(productor));
+        List<Productor> tabla=null;
+        int num_filas = tabla!=null? tabla.size() : 0;
         if(num_filas>0){
         
     %>
@@ -50,8 +50,9 @@
                         %>
                         <tr>
                             <th scope="row"><%=i+1%></th>
-                            <td><%=productorList.get(i).getNombre()%></td>
-                            <td><%=productorList.get(i).getApellido()%></td>
+                            <td><%=tabla.get(i).getId()%></td>
+                            <td><%=tabla.get(i).getNombre()%></td>
+                            <td><%=tabla.get(i).getApellido()%></td>
                         </tr>
                         <%
                         }
@@ -67,14 +68,16 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">n°identificacion</th>
-                    <th scope="col">Productor</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
                 </tr>	
             </thead>
             <tbody>
                 <tr>
                     <th scope="row">1</th>
-                    <td>---</td>
-                    <td>---</td>
+                    <td>No hay datos</td>
+                    <td>No hay datos</td>
+                    <td>No hay datos</td>
                 </tr>
             </tbody>
         </table>
@@ -89,8 +92,6 @@
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	
-        
-        </footer>
+	</footer>
 </body>
 </html>
