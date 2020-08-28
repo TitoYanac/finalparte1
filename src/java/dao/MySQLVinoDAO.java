@@ -85,6 +85,7 @@ public class MySQLVinoDAO implements IVinoDAO{
                     while(rs.next()){
                         Vino vino = new Vino();
                         vino.setId(rs.getInt("idVino"));
+                        vino.setNombre(rs.getString("nombre"));
 
                         vinoList.add(vino);
 
@@ -96,6 +97,7 @@ public class MySQLVinoDAO implements IVinoDAO{
                     while(rs.next()){
                         Vino vino = new Vino();
                         vino.setId(rs.getInt("idVino"));
+                        vino.setNombre(rs.getString("nombre"));
 
                         vinoList.add(vino);
 
@@ -109,6 +111,7 @@ public class MySQLVinoDAO implements IVinoDAO{
                 while(rs.next()){
                     Vino vino = new Vino();
                     vino.setId(rs.getInt("Vinos_idVino"));
+                    vino.setNombre(rs.getString("nombre"));
                     
                     vinoList.add(vino);
    
