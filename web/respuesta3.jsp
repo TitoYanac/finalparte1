@@ -27,8 +27,8 @@
         
         IAccesoFactory accesoFactory = IFactoryDAO.getInstance().getAccesoFactory("MySQL");
         IProductorDAO productorDAO = accesoFactory.getProductorService();
-        //List<Productor> tabla = productorDAO.obtenerProductoresSinProduccion();
-        List<Productor> tabla =  null;
+        List<Productor> tabla = productorDAO.obtenerProductoresSinProduccion();
+        //List<Productor> tabla =  null;
         int num_filas = tabla!=null? tabla.size() : 0;
         if(num_filas>0){
         

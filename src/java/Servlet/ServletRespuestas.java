@@ -181,6 +181,7 @@ public class ServletRespuestas extends HttpServlet {
     private void pregunta5(HttpServletRequest request, HttpServletResponse response) {
         sesion = request.getSession(false);
         String cantidad = request.getParameter("cantidad");
+        System.out.println("CANTIDAD ES :"+cantidad);
         sesion.setAttribute("cantidad", cantidad);
         
         try {

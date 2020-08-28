@@ -28,8 +28,8 @@
         
         IAccesoFactory accesoFactory = IFactoryDAO.getInstance().getAccesoFactory("MySQL");
         IProductorDAO productorDAO = accesoFactory.getProductorService();
-        //List<Productor> tabla = productorDAO.productoresxNVinos(Integer.parseInt(cantidad));
-        List<Productor> tabla = null;
+        List<Productor> tabla = productorDAO.productoresxNVinos(Integer.parseInt(cantidad));
+        //List<Productor> tabla = null;
         int num_filas = tabla!=null? tabla.size() : 0;
         if(num_filas>0){
         
@@ -41,6 +41,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Apellido</th>
+                            <th scope="col">Cantidad</th>
                         </tr>	
                     </thead>
                     <tbody>
@@ -51,6 +52,7 @@
                             <th scope="row"><%=i+1%></th>
                             <td><%=tabla.get(i).getNombre()%></td>
                             <td><%=tabla.get(i).getApellido()%></td>
+                            <td><%=tabla.get(i).getCantidad()%></td>
                         </tr>
                         <%
                         }
@@ -67,11 +69,13 @@
                     <th scope="col">#</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellido</th>
+                    <th scope="col">Cantidad</th>
                 </tr>	
             </thead>
             <tbody>
                 <tr>
                     <th scope="row">1</th>
+                    <td>No hay datos</td>
                     <td>No hay datos</td>
                     <td>No hay datos</td>
                 </tr>

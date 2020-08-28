@@ -30,7 +30,7 @@
             Vino vinoDAO =  accesoFactory.getVinoService().obtenerVinoMayorProduccion();
             //Vino vinoDAO = null;
         %>
-        <p> <%=vinoDAO.getNombre()!=null? vinoDAO.getNombre(): "No Hay Dato" %></p>
+        <p> <%=vinoDAO.getNombre()!=null? "N° Identificacion: "+vinoDAO.getId()+"  -  Vino: "+vinoDAO.getNombre()+"  -  Cantidad: "+vinoDAO.getCantidad() + " botellas de vino ": "No Hay Dato" %></p>
     </section>
 
 

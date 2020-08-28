@@ -93,6 +93,7 @@ public class MySQLProductorDAO implements IProductorDAO{
                 
                 Productor productor=new Productor();
                 productor.setId(rs.getInt("idProductor"));
+                productor.setNombre(rs.getString("nombre"));
                 productor.setApellido(rs.getString("apellido"));
                 
                 productorList.add(productor);
@@ -147,6 +148,7 @@ public class MySQLProductorDAO implements IProductorDAO{
                 Productor productor=new Productor();
                 productor.setNombre(rs.getString("nombre"));
                 productor.setApellido(rs.getString("apellido"));
+                productor.setCantidad(rs.getInt("cantidad"));
                 
                 productorList.add(productor);
                 
@@ -173,6 +175,7 @@ public class MySQLProductorDAO implements IProductorDAO{
             while(rs.next()){
                 
                 Productor productor=new Productor();
+                productor.setId(rs.getInt("idProductor"));
                 productor.setNombre(rs.getString("nombre"));
                 productor.setApellido(rs.getString("apellido"));
                 productor.setCantidad(rs.getInt("cantidad"));

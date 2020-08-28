@@ -59,7 +59,7 @@ public class MySQLVinoDAO implements IVinoDAO{
             while(rs.next()){
                 vino.setId(rs.getInt("Vinos_idVino"));
                 vino.setNombre(rs.getString("nombre"));
-   
+                vino.setCantidad(rs.getInt("cantidad"));
             }
             
         }

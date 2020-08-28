@@ -4,6 +4,8 @@
     Author     : Tito
 --%>
 
+<%@page import="modelo.Vino"%>
+<%@page import="design.IVinoDAO"%>
 <%@page import="modelo.Productor"%>
 <%@page import="design.IProductorDAO"%>
 <%@page import="Factory.IFactoryDAO"%>
@@ -28,9 +30,9 @@
         String productor = (String)sesion.getAttribute("productor");
         
         IAccesoFactory accesoFactory = IFactoryDAO.getInstance().getAccesoFactory("MySQL");
-        IProductorDAO productorDAO = accesoFactory.getProductorService();
-        //List<Productor> tabla = productorDAO.filtrarProductoresxRegionxCantidadBotellas(grado, Integer.parseInt(productor));
-        List<Productor> tabla=null;
+        IVinoDAO vinoDAO = accesoFactory.getVinoService();
+        List<Vino> tabla = vinoDAO.obtenerVinoxGradoOProductor(grado, Integer.parseInt(productor));
+        //List<Productor> tabla=null;
         int num_filas = tabla!=null? tabla.size() : 0;
         if(num_filas>0){
         
@@ -41,7 +43,7 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">n°identificacion</th>
-                            <th scope="col">Productor</th>
+                            <th scope="col">Vino</th>
                         </tr>	
                     </thead>
                     <tbody>
@@ -52,7 +54,7 @@
                             <th scope="row"><%=i+1%></th>
                             <td><%=tabla.get(i).getId()%></td>
                             <td><%=tabla.get(i).getNombre()%></td>
-                            <td><%=tabla.get(i).getApellido()%></td>
+                            <td></td>
                         </tr>
                         <%
                         }
@@ -69,13 +71,11 @@
                     <th scope="col">#</th>
                     <th scope="col">n°identificacion</th>
                     <th scope="col">Nombre</th>
-                    <th scope="col">Apellido</th>
                 </tr>	
             </thead>
             <tbody>
                 <tr>
                     <th scope="row">1</th>
-                    <td>No hay datos</td>
                     <td>No hay datos</td>
                     <td>No hay datos</td>
                 </tr>

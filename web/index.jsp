@@ -95,7 +95,7 @@
                         <input type="text" class="form-control" id="grado2" name="grado2" placeholder="Grado">
                     </div>
                     <div class="form-group col-md-5">
-                        <input type="text" class="form-control" id="productor2" name="productor2" placeholder="Productor">
+                        <input type="text" class="form-control" id="productor2" name="productor2" placeholder="Id Productor">
                     </div>
                     <div class="form-group col-md-4">
                         <input type='submit' id='accion2' name='Respuesta2' value='Respuesta2' class="btn btn-primary"/>
@@ -108,13 +108,11 @@
                                 <th scope="col">#</th>
                                 <th scope="col">n°identificacion</th>
                                 <th scope="col">Nombre</th>
-                                <th scope="col">Apellido</th>
                             </tr>	
                         </thead>
                         <tbody>
                             <tr>
                                 <th scope="row">1</th>
-                                <td>---</td>
                                 <td>---</td>
                                 <td>---</td>
                             </tr>
@@ -172,7 +170,7 @@
         <p class="pregunta">5.¿Cuáles es el nombre y su apellido de los productores que producen por lo menos N vinos diferentes</p>
         <form  id="form5" class="row">
           <div class="form-group col-md-5">
-              <input type="text" class="form-control" id="cantidad5" name="cantidad5" placeholder="Cantidad">
+              <input type="text" class="form-control" id="cantidad5" name="cantidad5" placeholder="Cantidad de Vinos">
           </div>
           <div class="form-group col-md-4">
               <input type='submit' id='accion5' name='Respuesta5' value='Respuesta5' class="btn btn-primary"/>
@@ -185,11 +183,13 @@
                 <th scope="col">#</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Apellido</th>
+                <th scope="col">Cantidad</th>
               </tr> 
             </thead>
             <tbody>
               <tr>
                 <th scope="row">1</th>
+                <td>---</td>
                 <td>---</td>
                 <td>---</td>
               </tr>
@@ -206,7 +206,7 @@
         
         <form  id="form6" class="row">
             <div class="form-group col-md-5">
-                <input type="text" class="form-control" id="cantidad6"  name="cantidad6" placeholder="Cantidad">
+                <input type="text" class="form-control" id="cantidad6"  name="cantidad6" placeholder="Cantidad de Botellas">
             </div>
             <div class="form-group col-md-4">
                 <input type='submit' id='accion6' name='Respuesta6' value='Respuesta6' class="btn btn-primary"/>
@@ -218,6 +218,7 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
+                <th scope="col">N° Identificacion</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Apellido</th>
                 <th scope="col">Num.vinos.Signif.</th>
@@ -226,9 +227,10 @@
             <tbody>
               <tr>
                 <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>10</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
               </tr>
             </tbody>
           </table>
@@ -281,6 +283,7 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
+                <th scope="col">N° Identificacion</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Apellido</th>
               </tr> 
@@ -288,8 +291,9 @@
             <tbody>
               <tr>
                 <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
               </tr>
             </tbody>
           </table>
@@ -317,7 +321,6 @@
                 cantidad1: {required:'Este Campo es Obligatorio',number:'Solo Numeros'}
             },
             submitHandler: function (form) {
-                 alert($('#accion1').val());
                 $.ajax({
                     url: "ServletRespuestas",
                     data:{
@@ -344,7 +347,6 @@
                 grado2: {required:'Este Campo es Obligatorio',number:'Solo Numeros'}
             },
             submitHandler: function (form) {
-                alert("click");
                 $.ajax({
                     type: 'POST',
                     url: 'ServletRespuestas',
