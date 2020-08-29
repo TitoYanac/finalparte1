@@ -8,11 +8,13 @@ package dao;
 import Factory.FactoryDB;
 import design.IProductorDAO;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Productor;
+
 import modelo.Resultado;
 
 /**
@@ -22,6 +24,7 @@ import modelo.Resultado;
 public class MySQLProductorDAO implements IProductorDAO{
     
     Statement st=null;
+    PreparedStatement ps=null;
     ResultSet rs=null;
     Connection cn ;
 
@@ -50,7 +53,12 @@ public class MySQLProductorDAO implements IProductorDAO{
     public Resultado eliminarProductor(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
+    
+    /********************
+        PREGUNTA 3
+    *********************/
+    
     @Override
     public List<Productor> obtenerProductoresSinProduccion() {
         
@@ -80,7 +88,11 @@ public class MySQLProductorDAO implements IProductorDAO{
         
         return productorList;
     }
-
+    
+    
+    /********************
+        PREGUNTA 8
+    *********************/
     @Override
     public List<Productor> obtenerProductoresSinNombreSinProduccion() {
         List<Productor> productorList = new ArrayList<>();
@@ -108,7 +120,10 @@ public class MySQLProductorDAO implements IProductorDAO{
         return productorList;
 
     }
-
+    
+    /********************
+        PREGUNTA 1
+    *********************/
     @Override
     public List<Productor> filtrarProductoresxRegionxCantidadBotellas(String region, int cantidad) {
         List<Productor> productorList = new ArrayList<>();
@@ -134,7 +149,12 @@ public class MySQLProductorDAO implements IProductorDAO{
         
         return productorList;
     }
-
+    
+    
+     /********************
+        PREGUNTA 5
+    *********************/
+    
     @Override
     public List<Productor> productoresxNVinos(int cantidad) {
         List<Productor> productorList = new ArrayList<>();
@@ -162,14 +182,18 @@ public class MySQLProductorDAO implements IProductorDAO{
         
         return productorList;
     }
-
+    
+    /********************
+        PREGUNTA 6
+    *********************/
     @Override
     public List<Productor> productoresxVinosSignificativos(int cantidad) {
-        
+      
         List<Productor> productorList = new ArrayList<>();
         
         try{
             st=cn.createStatement();
+            ResultSet rs1=null;
             rs=st.executeQuery("CALL SP_productorxVinoSignificativo("+cantidad+")");
             
             while(rs.next()){
@@ -181,7 +205,10 @@ public class MySQLProductorDAO implements IProductorDAO{
                 productor.setCantidad(rs.getInt("cantidad"));
                 productorList.add(productor);
                 
+                
             }
+            
+            
             
         }
         catch(Exception e){
@@ -190,6 +217,50 @@ public class MySQLProductorDAO implements IProductorDAO{
 
         
         return productorList;
+    }
+    
+    
+    /********************
+        PREGUNTA 7
+    *********************/
+    @Override
+    public List<Productor> productoresxVinosDeProductor(int idProductor) {
+      
+        System.out.println("INGRESO FUNCION 7");
+        List<Productor> productorList = new ArrayList<Productor>();
+        
+        try{
+            //st=cn.createStatement();
+
+            //rs=st.executeQuery("CALL SP_productoresxVinoDeProductor("+idProductor+")");
+            
+            
+            ps = cn.prepareStatement("{CALL SP_productoresxVinoDeProductor(?)}");
+            ps.setInt(1,idProductor);
+            rs =ps.executeQuery();
+            
+            while(rs.next()){
+                
+                Productor productor=new Productor();
+                productor.setId(rs.getInt("idProductor"));
+                productor.setNombre(rs.getString("nombre"));
+                productor.setApellido(rs.getString("apellido"));
+
+                
+                productorList.add(productor);
+                
+            }
+
+            
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+
+        
+        return productorList;
+    
     }
     
     

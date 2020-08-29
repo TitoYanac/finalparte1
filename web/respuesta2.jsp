@@ -29,7 +29,7 @@
         String grado = (String)sesion.getAttribute("grado");
         String productor = (String)sesion.getAttribute("productor");
         
-        IAccesoFactory accesoFactory = IFactoryDAO.getInstance().getAccesoFactory("MySQL");
+        IAccesoFactory accesoFactory = IFactoryDAO.getInstance().getAccesoFactory("MySQL"); //MongoDB  //MySQL
         IVinoDAO vinoDAO = accesoFactory.getVinoService();
         List<Vino> tabla = vinoDAO.obtenerVinoxGradoOProductor(grado, Integer.parseInt(productor));
         //List<Productor> tabla=null;

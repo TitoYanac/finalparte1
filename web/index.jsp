@@ -242,7 +242,7 @@
       <p class="pregunta">7.¿Qué productores producen al menos todos los vinos que son producidos por el productor determinado?</p>
         <form  id="form7" class="row">
           <div class="form-group col-md-5">
-              <input type="text" class="form-control" id="productor7"  name="productor7" placeholder="Productor">
+              <input type="text" class="form-control" id="productor7"  name="productor7" placeholder="IdProductor">
           </div>
           <div class="form-group col-md-4">
               <input type='submit' id='accion7' name='Respuesta7' value='Respuesta7' class="btn btn-primary"/>
@@ -260,8 +260,8 @@
             <tbody>
               <tr>
                 <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
+                <td>---</td>
+                <td>---</td>
               </tr>
             </tbody>
           </table>

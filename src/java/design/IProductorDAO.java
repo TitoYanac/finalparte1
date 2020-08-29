@@ -31,4 +31,6 @@ public interface IProductorDAO {
     List<Productor> productoresxNVinos(int cantidad);
     
     List<Productor> productoresxVinosSignificativos(int cantidad);
+    
+    List<Productor> productoresxVinosDeProductor(int idProductor);
 }

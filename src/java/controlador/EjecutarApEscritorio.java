@@ -21,7 +21,7 @@ public class EjecutarApEscritorio {
     public static void main(String[] args) {
         // TODO code application logic here
         VistaEscritorio vista = new VistaEscritorio();
-        IAccesoFactory acceso = IFactoryDAO.getAccesoFactory("MySQL");
+        IAccesoFactory acceso = IFactoryDAO.getAccesoFactory("MySQL"); //MongoDB //MySQL
         ControladorEscritorio controlador = new ControladorEscritorio(vista,acceso);
         controlador.iniciar();
         vista.setVisible(true);        

@@ -27,7 +27,7 @@
         String region = (String)sesion.getAttribute("region");
         String cantidad = (String)sesion.getAttribute("cantidad");
         
-        IAccesoFactory accesoFactory = IFactoryDAO.getInstance().getAccesoFactory("MySQL");
+        IAccesoFactory accesoFactory = IFactoryDAO.getInstance().getAccesoFactory("MySQL"); //MongoDB  //MySQL
         IProductorDAO productorDAO = accesoFactory.getProductorService();
         List<Productor> tabla = productorDAO.filtrarProductoresxRegionxCantidadBotellas(region, Integer.parseInt(cantidad));
   

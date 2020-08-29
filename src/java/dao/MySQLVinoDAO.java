@@ -47,7 +47,11 @@ public class MySQLVinoDAO implements IVinoDAO{
     public Resultado eliminarVino(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
+    
+    /********************
+        PREGUNTA 4
+    *********************/
     @Override
     public Vino obtenerVinoMayorProduccion() {
         Vino vino = new Vino();
@@ -70,7 +74,11 @@ public class MySQLVinoDAO implements IVinoDAO{
 
         return vino;
     }
-
+    
+    /********************
+        PREGUNTA 2
+    *********************/
+    
     @Override
     public List<Vino> obtenerVinoxGradoOProductor(String grado, int idProductor) {
     

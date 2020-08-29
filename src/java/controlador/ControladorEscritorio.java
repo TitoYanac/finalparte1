@@ -21,7 +21,7 @@ import modelo.Vino;
  * @author Hp pavilion
  */
 public class ControladorEscritorio implements ActionListener {
-    private VistaEscritorio vista;        
+   private VistaEscritorio vista;        
     private IAccesoFactory acceso;
     private IProductorDAO modeloProductor;
     private IVinoDAO modeloVino;
@@ -32,7 +32,6 @@ public class ControladorEscritorio implements ActionListener {
     public ControladorEscritorio(VistaEscritorio vista,IAccesoFactory acceso ){
         this.vista = vista;
         this.acceso = acceso;
-        this.acceso = IFactoryDAO.getAccesoFactory("MySQL");
         modeloProductor = this.acceso.getProductorService();
         modeloVino = this.acceso.getVinoService();
         
@@ -62,7 +61,7 @@ public class ControladorEscritorio implements ActionListener {
                 productor = resultado.get(i);
                 texto += productor.getNombre() + " " +  productor.getApellido() + " ,";
             }
-            vista.txtresultado1.setText(texto);
+            vista.txtresultado.setText(texto);
         }else
         if(e.getSource() == vista.btnbuscar2){
             List<Vino> resultado;
@@ -79,9 +78,9 @@ public class ControladorEscritorio implements ActionListener {
             
             for (int i = 0; i < resultado.size(); i++) {
                 vino = resultado.get(i);
-                texto += "ID Vino: " + vino.getId() + " , Nombre : "+vino.getNombre()+"\n";
+                texto += "ID Vino: " + vino.getId() + "\n";
             }
-            vista.txtresultado2.setText(texto);
+            vista.txtresultado.setText(texto);
         }else
         if(e.getSource() == vista.btnbuscar3){
             List<Productor> resultado;
@@ -93,14 +92,14 @@ public class ControladorEscritorio implements ActionListener {
                 productor = resultado.get(i);
                 texto += "Numero: " + productor.getId() + ", Nombre:  " + productor.getNombre() + ", Apellido: " + productor.getApellido() + "\n";
             }
-            vista.txtresultado3.setText(texto);
+            vista.txtresultado.setText(texto);
         }else
         if(e.getSource() == vista.btnbuscar4){
             Vino vino;
             String texto = "";
             vino = modeloVino.obtenerVinoMayorProduccion();
             texto = "Vino más producido\nId : " + vino.getId() + ", Nombre : " + vino.getNombre();
-            vista.txtresultado4.setText(texto);
+            vista.txtresultado.setText(texto);
         }else
         if(e.getSource() == vista.btnbuscar5){
             List<Productor> resultado;
@@ -112,7 +111,7 @@ public class ControladorEscritorio implements ActionListener {
                 productor = resultado.get(i);
                 texto += "Nombre: " + productor.getNombre() + ", Apellido: " +  productor.getApellido() + "\n";
             }
-            vista.txtresultado5.setText(texto);
+            vista.txtresultado.setText(texto);
         }else
         if(e.getSource() == vista.btnbuscar6){
             List<Productor> resultado;
@@ -124,11 +123,20 @@ public class ControladorEscritorio implements ActionListener {
                 productor = resultado.get(i);
                 texto += "Nombre: " + productor.getNombre() + ", Vinos Significativos: " +  productor.getCantidad() + "\n";
             }
-            vista.txtresultado6.setText(texto);
+            vista.txtresultado.setText(texto);
         }
         else
         if(e.getSource() == vista.btnbuscar7){
-            vista.txtresultado7.setText("Falta");
+            List<Productor> resultado;
+            Productor productor;
+            String texto = "";
+            resultado = modeloProductor.productoresxVinosDeProductor(Integer.parseInt(vista.txtproductor7.getText()));
+
+            for (int i = 0; i < resultado.size(); i++) {
+                productor = resultado.get(i);
+                texto += "ID Productor: " + productor.getId() +" - Nombre : "+productor.getNombre()+"\n";
+            }
+            vista.txtresultado.setText(texto);
         }
         else
         if(e.getSource() == vista.btnbuscar8){
@@ -141,7 +149,7 @@ public class ControladorEscritorio implements ActionListener {
                 productor = resultado.get(i);
                 texto += "ID Productor: " + productor.getId() + ", Apellido: " + productor.getApellido() + "\n";
             }
-            vista.txtresultado8.setText(texto);            
+            vista.txtresultado.setText(texto);            
             
         }
     }

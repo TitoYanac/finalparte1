@@ -27,7 +27,7 @@ public class IFactoryDAO {
         switch(tipo){
             case "MySQL":
                 return MySQLFactoryDAO.getInstance();
-            case "Mongo":
+            case "MongoDB":
                 return MongoFactoryDAO.getInstance();
             default:
                 throw new RuntimeException("Unsupported db type");

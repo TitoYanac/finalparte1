@@ -25,7 +25,7 @@
     <%
         HttpSession sesion= request.getSession(false);
         
-        IAccesoFactory accesoFactory = IFactoryDAO.getInstance().getAccesoFactory("MySQL");
+        IAccesoFactory accesoFactory = IFactoryDAO.getInstance().getAccesoFactory("MySQL"); //MongoDB  //MySQL
         IProductorDAO productorDAO = accesoFactory.getProductorService();
         List<Productor> tabla = productorDAO.obtenerProductoresSinNombreSinProduccion();
         //List<Productor> tabla = null;
