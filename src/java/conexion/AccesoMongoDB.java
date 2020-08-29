@@ -31,7 +31,7 @@ public class AccesoMongoDB implements IAccesoBD{
 
         try{
             MongoClient mongo = new MongoClient("localhost",27017);
-            BaseDatos= mongo.getDB("PruebaDB");
+            BaseDatos= mongo.getDB("PracticaDS");
             System.out.println("Connect to data base  mongo successfully");
         }catch (Exception ex){ 
             Logger.getLogger(Connection.class.getName()).log(Level.SEVERE,null, ex);
