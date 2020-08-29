@@ -26,7 +26,7 @@
         
         <%
             HttpSession sesion= request.getSession(false);
-            IAccesoFactory accesoFactory = IFactoryDAO.getInstance().getAccesoFactory("MySQL");
+            IAccesoFactory accesoFactory = IFactoryDAO.getInstance().getAccesoFactory("MySQL"); //MongoDB //MySQL
             Vino vinoDAO =  accesoFactory.getVinoService().obtenerVinoMayorProduccion();
             //Vino vinoDAO = null;
         %>

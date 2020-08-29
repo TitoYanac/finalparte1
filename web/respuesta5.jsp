@@ -26,7 +26,7 @@
         HttpSession sesion= request.getSession(false);
         String cantidad = (String)sesion.getAttribute("cantidad");
         
-        IAccesoFactory accesoFactory = IFactoryDAO.getInstance().getAccesoFactory("MySQL");
+        IAccesoFactory accesoFactory = IFactoryDAO.getInstance().getAccesoFactory("MySQL"); //MongoDB //MySQL
         IProductorDAO productorDAO = accesoFactory.getProductorService();
         List<Productor> tabla = productorDAO.productoresxNVinos(Integer.parseInt(cantidad));
         //List<Productor> tabla = null;

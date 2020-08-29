@@ -26,7 +26,7 @@
         HttpSession sesion= request.getSession(false);
         String productor = (String)sesion.getAttribute("productor");
         
-        IAccesoFactory accesoFactory = IFactoryDAO.getInstance().getAccesoFactory("MySQL");
+        IAccesoFactory accesoFactory = IFactoryDAO.getInstance().getAccesoFactory("MySQL"); //MongoDB //MySQL
         IProductorDAO productorDAO = accesoFactory.getProductorService();
         List<Productor> tabla = productorDAO.productoresxVinosDeProductor(Integer.parseInt(productor));
   
